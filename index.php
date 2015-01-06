@@ -8,6 +8,9 @@
         <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
         <!-- Jquery -->
         <script type="text/javascript" src="jquery/jquery-1.11.2.min.js"></script>
+        <script type="text/javascript" src="jquery/validate/jquery.validate.min.js"></script>
+        <script type="text/javascript" src="jquery/validate/messages_es.min.js"></script>
+        <!-- Funciones -->
         <script type="text/javascript">
             function activarBtn() {
                 var btneliminar = document.getElementById('btneliminar');
@@ -65,15 +68,15 @@
                 <div class="col-md-3 well">
                     <fieldset>
                         <legend>Ingresar contacto</legend>
-                        <form role="form" action="agregar.php" enctype="multipart/form-data" method="get">
+                        <form role="form" action="agregar.php" enctype="multipart/form-data" method="get" id="formagregar">
                             <div class="form-group">
-                                <label for="inputnombre">Nombre: <input type="text" name="txtnombre" class="form-control" id="inputnombre" placeholder="Escribe aquí el nombre"/></label>
+                                <label for="inputnombre">Nombre: <input type="text" name="txtnombre" class="form-control" id="inputnombre" placeholder="Escribe aquí el nombre" maxlength="15" required/></label>
                             </div>
                             <div class="form-group">
-                                <label for="inputapellido">Apellido: <input type="text" name="txtapellido" class="form-control" id="inputapellido" placeholder="Escribe aquí el apellido"/></label>
+                                <label for="inputapellido">Apellido: <input type="text" name="txtapellido" class="form-control" id="inputapellido" placeholder="Escribe aquí el apellido" maxlength="20"/></label>
                             </div>
                             <div class="form-group">
-                                <label for="inputnumero">Número: <input type="text" name="txtnumero" class="form-control" id="inputnumero" placeholder="Escribe aquí el número"/></label>
+                                <label for="inputnumero">Número: <input type="text" name="txtnumero" class="form-control" id="inputnumero" placeholder="Escribe aquí el número" number="true" minlength="9" required/></label>
                             </div>
                             <input type="submit" name="btnenviar" value="Agregar contacto" class="btn btn-default"/>
                         </form>
@@ -104,3 +107,9 @@
         </div>
     </body>
 </html>
+<!-- Validación de formulario -->
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#formagregar").validate();
+    });
+</script>
