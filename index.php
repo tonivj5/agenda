@@ -10,7 +10,7 @@
         <script type="text/javascript" src="jquery/jquery-1.11.2.min.js"></script>
         <script type="text/javascript" src="jquery/validate/jquery.validate.min.js"></script>
         <script type="text/javascript" src="jquery/validate/messages_es.min.js"></script>
-        <!-- Funciones -->
+        <!-- Funciones JS -->
         <script type="text/javascript">
             function activarBtn() {
                 var btneliminar = document.getElementById('btneliminar');
@@ -64,7 +64,7 @@
                     </tbody>
                 </table>
             </div>
-            <div id="formulario" class="row">
+            <div id="formulario" class="row" style="margin: auto;">
                 <div class="col-md-3 well">
                     <fieldset>
                         <legend>Ingresar contacto</legend>
@@ -82,26 +82,36 @@
                         </form>
                     </fieldset>
                 </div>
-                <div class="col-md-3 well">
-                    <fieldset>
-                        <legend>Buscar contacto</legend>
-                        <form role="form" action="buscar.php" enctype="multipart/form-data">
+                <div class="col-md-2 well">
+                    <div class="">
+                        <fieldset>
+                            <legend>Buscar contacto</legend>
+                            <form role="form" action="buscar.php" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <label for="inputnombreb">Nombre: <input type="text" name="txtnombreb" class="form-control" id="inputnombreb" placeholder="Buscar aquí"/></label>
+                                </div>
+                                <input type="submit" name="btnenviarb" value="Buscar contacto" class="btn btn-default"/>
+                            </form>
+                        </fieldset>
+                    </div>
+                    <!--<div class="">
+                        <legend>Actualizar contacto</legend>
+                        <form role="form" action="actualizar.php" enctype="multipart/form-data">
                             <div class="form-group">
-                                <label for="inputnombreb">Nombre: <input type="text" name="txtnombreb" class="form-control" id="inputnombreb" placeholder="Buscar aquí"/></label>
                             </div>
-                            <input type="submit" name="btnenviarb" value="Buscar contacto" class="btn btn-default"/>
+                            <input type="button" name="btnactualizar" id="btnactualizar" value="Actualizar contacto" class="btn btn-success disabled" onclick="document.formactualizar.submit();"/>
                         </form>
-                    </fieldset>
-                </div>
-                <div class="col-md-3 well">
-                    <fieldset>
-                        <legend>Eliminar contacto</legend>
-                        <form role="form" action="eliminar.php" enctype="multipart/form-data">
-                            <div class="form-group">
-                            </div>
-                            <input type="button" name="btneliminar" id="btneliminar" value="Eliminar contacto" class="btn btn-danger disabled" onclick="document.formeliminar.submit();"/>
-                        </form>
-                    </fieldset>
+                    </div>-->
+                    <div class="">
+                        <fieldset>
+                            <legend>Eliminar contacto</legend>
+                            <form role="form" action="eliminar.php" enctype="multipart/form-data">
+                                <div class="form-group">
+                                </div>
+                                <input type="button" name="btneliminar" id="btneliminar" value="Eliminar contacto" class="btn btn-danger disabled" onclick="document.formeliminar.submit();"/><br /><br /><br />
+                            </form>
+                        </fieldset>
+                    </div>
                 </div>
             </div>
         </div>
