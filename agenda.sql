@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.1.73, for debian-linux-gnu (i486)
+-- MySQL dump 10.13  Distrib 5.5.40, for debian-linux-gnu (i686)
 --
 -- Host: localhost    Database: agenda
 -- ------------------------------------------------------
--- Server version	5.1.73-0ubuntu0.10.04.1
+-- Server version	5.5.40-0ubuntu1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,13 +16,13 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `contactos`
+-- Table structure for table `contacto`
 --
 
-DROP TABLE IF EXISTS `contactos`;
+DROP TABLE IF EXISTS `contacto`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `contactos` (
+CREATE TABLE `contacto` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nombre` char(25) DEFAULT NULL,
   `apellido` char(40) DEFAULT NULL,
@@ -32,13 +32,12 @@ CREATE TABLE `contactos` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `contactos`
+-- Dumping data for table `contacto`
 --
 
-LOCK TABLES `contactos` WRITE;
-/*!40000 ALTER TABLE `contactos` DISABLE KEYS */;
-INSERT INTO `contactos` VALUES (1,'Toni','Villena',697868692),(2,'Francisco','Recio',676453628),(7,'Paco','Rayo',678765678),(8,'Lara','Miriadax',678766238);
-/*!40000 ALTER TABLE `contactos` ENABLE KEYS */;
+LOCK TABLES `contacto` WRITE;
+/*!40000 ALTER TABLE `contacto` DISABLE KEYS */;
+/*!40000 ALTER TABLE `contacto` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -50,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-01-07 14:42:27
+-- Dump completed on 2015-01-08 17:41:28

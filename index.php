@@ -52,7 +52,7 @@
                         $pass = "usuario";
                         $db = "agenda";
                         $conexion = mysqli_connect($servidor, $usuario, $pass, $db) or die("Imposible conectarse");
-                        $consulta = "select * from contactos";
+                        $consulta = "select * from contacto";
                         $resultado = $conexion->query($consulta);
                         echo "<form name='formeliminar' role='form' action='eliminar.php' enctype='multipart/form-data' method='get'>";
                         while ($fila = $resultado->fetch_assoc()) {

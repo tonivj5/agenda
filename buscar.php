@@ -22,7 +22,7 @@
     $db = "agenda";
     $buscar = $_GET["txtnombreb"];
     $conexion = mysqli_connect($servidor, $usuario, $pass, $db) or die("Imposible conectarse");
-    $consulta = "select * from contactos where nombre like '%$buscar%'";
+    $consulta = "select * from contacto where nombre like '%$buscar%'";
     $resultado = $conexion->query($consulta);
     while ($fila = $resultado->fetch_assoc()) {
         echo "<tr><td><input type='checkbox' name='chkid[]' value='".$fila["id"]."'/></td><td>".$fila["nombre"]."</td><td>".$fila["apellido"]."</td><td>".$fila["numero"]."</td></tr>";

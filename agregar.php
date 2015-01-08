@@ -11,7 +11,7 @@
     $pass = "usuario";
     $bd = "agenda";
     $conexion = mysqli_connect($servidor, $usuario, $pass, $bd) or die("Imposible conectarse");
-    $consulta = "insert into contactos (nombre, apellido, numero) values ('$nombre', '$apellido', $numero)";
+    $consulta = "insert into contacto (nombre, apellido, numero) values ('$nombre', '$apellido', $numero)";
     $resultado = mysqli_query($conexion, $consulta);
     if ($resultado) {
         echo "<center><h1>Se ha agregado exitosamente el contacto</h1><br />";
