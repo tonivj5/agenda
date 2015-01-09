@@ -1,6 +1,7 @@
 <head>
     <link type="text/css" rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <?php
     $nombre = $_GET["txtnombre"];

@@ -1,5 +1,6 @@
 <head>
-    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
     <script type="text/javascript" src="jquery/jquery-1.11.2.min.js"></script>
     <script type="text/javascript" src="jquery/validate/jquery.validate.min.js"></script>
