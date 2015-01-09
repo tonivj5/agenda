@@ -40,11 +40,26 @@
 
                 }
             }
+            function enviarEliminar() {
+                var formulario = document.getElementById('formenvio');
+                formulario.removeAttribute('action', 'eliminar.php');
+                formulario.setAttribute('action', 'eliminar.php');
+                formulario.submit();
+            }
+            function enviarUpdate() {
+                var formulario = document.getElementById('formenvio');
+                formulario.removeAttribute('action', 'preupdate.php');
+                formulario.setAttribute('action', 'preupdate.php');
+                formulario.submit();
+            }
         </script>
-        <script type="text/javascript">
+        <script type="text/javascrip">
+
+        </script>
+        <!--<script type="text/javascript">
             var principal = document.getElementById('main');
             principal.classList.add('oscurecer');
-        </script>
+        </script>-->
     </head>
     <body>
 <!--
@@ -70,12 +85,10 @@
                         $conexion = mysqli_connect($servidor, $usuario, $pass, $db) or die("Imposible conectarse");
                         $consulta = "select * from contacto";
                         $resultado = $conexion->query($consulta);
-                        echo "<form name='formupdate' role='form' action='preupdate.php' enctype='multipart/form-data' method='get'>";
-                        echo "<form name='formeliminar' role='form' action='eliminar.php' enctype='multipart/form-data' method='get'>";
+                        echo "<form name='formupdate' role='form' action='preupdate.php' enctype='multipart/form-data' method='get' id='formenvio'>";
                         while ($fila = $resultado->fetch_assoc()) {
-                            echo "<tr><td><input type='checkbox' name='chkid[]' onclick='desactivarChk(this.value)' class='chk' value='".$fila["id"]."'/></td><td>".$fila["nombre"]."</td><td>".$fila["apellido"]."</td><td>".$fila["numero"]."</td></tr>";
+                            echo "<tr><td><input type='checkbox' name='chkid[]' onclick='activarBtn()' class='chk' value='".$fila["id"]."'/></td><td>".$fila["nombre"]."</td><td>".$fila["apellido"]."</td><td>".$fila["numero"]."</td></tr>";
                         }
-                        echo "</form>";
                         echo "</form>";
                         mysqli_close($conexion);
                     ?>
@@ -117,7 +130,7 @@
                         <form role="form" action="preupdate.php" enctype="multipart/form-data">
                             <div class="form-group">
                             </div>
-                                <input type="button" name="btnactualizar" id="btnactualizar" value="Actualizar contacto" class="btn btn-primary disabled" onclick="document.formupdate.submit();"/><br /><br />
+                                <input type="button" name="btnactualizar" id="btnactualizar" value="Actualizar contacto" class="btn btn-primary disabled" onclick="enviarUpdate();"/><br /><br />
                         </form>
                     </div>
                     <div class="">
@@ -126,7 +139,7 @@
                             <form role="form" action="eliminar.php" enctype="multipart/form-data">
                                 <div class="form-group">
                                 </div>
-                                <input type="button" name="btneliminar" id="btneliminar" value="Eliminar contacto" class="btn btn-danger disabled" onclick="document.formeliminar.submit();"/><br />
+                                <input type="button" name="btneliminar" id="btneliminar" value="Eliminar contacto" class="btn btn-danger disabled" onclick="enviarEliminar();"/><br />
                             </form>
                         </fieldset>
                     </div>

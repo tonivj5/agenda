@@ -6,9 +6,24 @@
     <script type="text/javascript" src="jquery/validate/messages_es.min.js"></script>
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript">
-        function descativarChk (id) {
+        function descativarChk(id) {
+            var chk = document.getElementById(id);
             var nombre = 'nombre'+id;
             nombre = document.getElementById(nombre);
+            var apellido = 'apellido'+id;
+            apellido = document.getElementById(apellido);
+            var numero = 'numero'+id;
+            numero = document.getElementById(numero);
+            if (chk.checked) {
+                nombre.removeAttribute('disabled', '');
+                apellido.removeAttribute('disabled', '');
+                numero.removeAttribute('disabled', '');
+
+            } else {
+                nombre.setAttribute('disabled', '');
+                apellido.setAttribute('disabled', '');
+                numero.setAttribute('disabled', '');
+            }
 
         }
     </script>
@@ -42,7 +57,7 @@ while ($cuenta > $i) {
     $consulta = "select * from contacto where id=$ids[$i]";
     $resultado = $conexion->query($consulta);
     while ($fila = $resultado->fetch_assoc()) {
-        echo "<tr><td><input type='checkbox' id='".$fila["id"]."' name='chkid[]' onclick='descativarChk()' class='chk' value='".$fila["id"]."' checked/></td><td><input type='text' id='nombre".$fila["id"]."' class='form-control' placeholder='".$fila["nombre"]."' maxlength='15' name='txtnombre[]' required/></td><td><input type='text' id='apellido".$fila["id"]."' name='txtapellido[]' class='form-control' placeholder='".$fila["apellido"]."' maxlength='20' /></td><td><input type='text' id='numero".$fila["id"]."' name='txtnumero[]' class='form-control' placeholder='".$fila["numero"]."' number='true' minlength='9' required/></td></tr>";
+        echo "<tr><td><input type='checkbox' id='".$fila["id"]."' name='chkid[]' onclick='descativarChk(this.value)' class='chk' value='".$fila["id"]."' checked/></td><td><input type='text' id='nombre".$fila["id"]."' class='form-control' placeholder='".$fila["nombre"]."' maxlength='15' name='txtnombre[]' required/></td><td><input type='text' id='apellido".$fila["id"]."' name='txtapellido[]' class='form-control' placeholder='".$fila["apellido"]."' maxlength='20' /></td><td><input type='text' id='numero".$fila["id"]."' name='txtnumero[]' class='form-control' placeholder='".$fila["numero"]."' number='true' minlength='9' required/></td></tr>";
     }
     $i++;
 }
