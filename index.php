@@ -68,12 +68,12 @@
                         $pass = "usuario";
                         $db = "agenda";
                         $conexion = mysqli_connect($servidor, $usuario, $pass, $db) or die("Imposible conectarse");
-                        $consulta = "select * from contacto, estado where id_estado=";
+                        $consulta = "select * from contacto";
                         $resultado = $conexion->query($consulta);
                         echo "<form name='formupdate' role='form' action='preupdate.php' enctype='multipart/form-data' method='get'>";
                         echo "<form name='formeliminar' role='form' action='eliminar.php' enctype='multipart/form-data' method='get'>";
                         while ($fila = $resultado->fetch_assoc()) {
-                            echo "<tr><td><input type='checkbox' name='chkid[]' onclick='activarBtn()' class='chk' value='".$fila["id"]."'/></td><td>".$fila["nombre"]."</td><td>".$fila["apellido"]."</td><td>".$fila["numero"]."</td></tr><tr><td>";
+                            echo "<tr><td><input type='checkbox' name='chkid[]' onclick='desactivarChk(this.value)' class='chk' value='".$fila["id"]."'/></td><td>".$fila["nombre"]."</td><td>".$fila["apellido"]."</td><td>".$fila["numero"]."</td></tr>";
                         }
                         echo "</form>";
                         echo "</form>";
