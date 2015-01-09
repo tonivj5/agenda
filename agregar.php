@@ -15,8 +15,7 @@
     $resultado = mysqli_query($conexion, $consulta);
     if ($resultado) {
         echo "<center><h1>Se ha agregado exitosamente el contacto</h1><br />";
-        echo "
-        <input class='btn btn-success' type='button' value='Volver atrás' onclick='history.back()'/></center>";
+        echo "<input class='btn btn-success' type='button' value='Volver atrás' onclick='history.back()'/></center>";
     } else {
         echo "Ha ocurrido un error: ".mysqli_error($conexion);
     }

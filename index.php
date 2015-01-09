@@ -1,6 +1,11 @@
 <html lang="es">
     <head>
         <title>Agenda</title>
+        <style>
+            .oscurecer {
+                opacity: 0.2;
+            }
+        </style>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap -->
@@ -14,6 +19,7 @@
         <script type="text/javascript">
             function activarBtn() {
                 var btneliminar = document.getElementById('btneliminar');
+                var btnactualizar = document.getElementById('btnactualizar');
                 var elementoschk = document.getElementsByClassName('chk');
                 var numerochk = elementoschk.length;
                 var i = 0;
@@ -27,13 +33,23 @@
                 }
                 if (n>0) {
                     btneliminar.classList.remove('disabled');
+                    btnactualizar.classList.remove('disabled');
                 } else {
                     btneliminar.classList.add('disabled');
+                    btnactualizar.classList.add('disabled');
+
                 }
             }
         </script>
+        <script type="text/javascript">
+            var principal = document.getElementById('main');
+            principal.classList.add('oscurecer');
+        </script>
     </head>
     <body>
+<!--
+        <div id="divacciones" class="well divacciones" style="z-index: 3; height: 50%; width: 50%; position: absolute; top: 25%; left: 25%; display: none;"></div>
+-->
         <div id="main">
             <div id="tabla" style="height: 150px; margin-bottom: 20px; overflow-y: auto">
                 <table class="table table-striped table-bordered table-hover">
@@ -52,12 +68,14 @@
                         $pass = "usuario";
                         $db = "agenda";
                         $conexion = mysqli_connect($servidor, $usuario, $pass, $db) or die("Imposible conectarse");
-                        $consulta = "select * from contacto";
+                        $consulta = "select * from contacto, estado where id_estado=";
                         $resultado = $conexion->query($consulta);
+                        echo "<form name='formupdate' role='form' action='preupdate.php' enctype='multipart/form-data' method='get'>";
                         echo "<form name='formeliminar' role='form' action='eliminar.php' enctype='multipart/form-data' method='get'>";
                         while ($fila = $resultado->fetch_assoc()) {
-                            echo "<tr><td><input type='checkbox' name='chkid[]' onclick='activarBtn()' class='chk' value='".$fila["id"]."'/></td><td>".$fila["nombre"]."</td><td>".$fila["apellido"]."</td><td>".$fila["numero"]."</td></tr>";
+                            echo "<tr><td><input type='checkbox' name='chkid[]' onclick='activarBtn()' class='chk' value='".$fila["id"]."'/></td><td>".$fila["nombre"]."</td><td>".$fila["apellido"]."</td><td>".$fila["numero"]."</td></tr><tr><td>";
                         }
+                        echo "</form>";
                         echo "</form>";
                         mysqli_close($conexion);
                     ?>
@@ -78,7 +96,7 @@
                             <div class="form-group">
                                 <label for="inputnumero">Número: <input type="text" name="txtnumero" class="form-control" id="inputnumero" placeholder="Escribe aquí el número" number="true" minlength="9" required/></label>
                             </div>
-                            <input type="submit" name="btnenviar" value="Agregar contacto" class="btn btn-default"/>
+                            <input type="submit" name="btnenviar" value="Agregar contacto" class="btn btn-default" id="btnagregar"/>
                         </form>
                     </fieldset>
                 </div>
@@ -90,25 +108,25 @@
                                 <div class="form-group">
                                     <label for="inputnombreb">Nombre: <input type="text" name="txtnombreb" class="form-control" id="inputnombreb" placeholder="Buscar aquí"/></label>
                                 </div>
-                                <input type="submit" name="btnenviarb" value="Buscar contacto" class="btn btn-default"/>
+                                <input type="submit" name="btnenviarb" value="Buscar contacto" class="btn btn-default" id="btnbuscar"/>
                             </form>
                         </fieldset>
                     </div>
-                    <!--<div class="">
+                    <div class="">
                         <legend>Actualizar contacto</legend>
-                        <form role="form" action="actualizar.php" enctype="multipart/form-data">
+                        <form role="form" action="preupdate.php" enctype="multipart/form-data">
                             <div class="form-group">
                             </div>
-                            <input type="button" name="btnactualizar" id="btnactualizar" value="Actualizar contacto" class="btn btn-success disabled" onclick="document.formactualizar.submit();"/>
+                                <input type="button" name="btnactualizar" id="btnactualizar" value="Actualizar contacto" class="btn btn-primary disabled" onclick="document.formupdate.submit();"/><br /><br />
                         </form>
-                    </div>-->
+                    </div>
                     <div class="">
                         <fieldset>
                             <legend>Eliminar contacto</legend>
                             <form role="form" action="eliminar.php" enctype="multipart/form-data">
                                 <div class="form-group">
                                 </div>
-                                <input type="button" name="btneliminar" id="btneliminar" value="Eliminar contacto" class="btn btn-danger disabled" onclick="document.formeliminar.submit();"/><br /><br /><br />
+                                <input type="button" name="btneliminar" id="btneliminar" value="Eliminar contacto" class="btn btn-danger disabled" onclick="document.formeliminar.submit();"/><br />
                             </form>
                         </fieldset>
                     </div>
@@ -121,5 +139,22 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $("#formagregar").validate();
+        /*$("#btnenviar").click(function(event) {
+            /*var main = document.getElementById('main');
+            var cuenta = main.classList.length;
+            var i = 0;
+            while (cuenta > i) {
+            if (main.classList[i] == 'oscurecer') {
+                i = cuenta + 10;
+                main.classList.remove('oscurecer');
+                }
+                var z = cuenta - 1;
+                if (main.classList[z] != 'oscurecer') {
+                }
+                i++;
+                }
+                    $("main").classList.add(oscurecer);
+            $("#divacciones").load('./buscar.php?txtnombre=p').toggle('slow');
+        })*/
     });
 </script>
