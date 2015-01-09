@@ -16,37 +16,35 @@ $numero = $_GET['txtnumero'];
 $conexion = mysqli_connect($servidor, $usuario, $pass, $db) or die('Imposible conectarse');
 $consulta = "select * from contacto";
 $resultado = $conexion->query($consulta);
+if ($resultado) {
+echo "<div class='container well center-block'><h2 class='text-center'>Historial de cambios</h2><hr />";
 $i = 0;
 $cuenta = count(explode(',',$ids));
 while ($cuenta>$i) {
+    /*echo "<h4>$nombre[$i] $apellido[$i] $numero[$i]</h4>";*/
     if (!empty($nombre[$i])) {
         $consulta = "update contacto set nombre='$nombre[$i]' where id=$id[$i]";
-        echo "Cambio $nombre[$i] realizado<br />";
+        echo "<h3>Cambio de nombre a <strong>$nombre[$i]</strong> realizado<h3>";
         $conexion->query($consulta);
     }
     if (!empty($apellido[$i])) {
         $consulta = "update contacto set apellido='$apellido[$i]' where id=$id[$i]";
-        echo "Cambio $apellido[$i] realizado<br />";
+        echo "<h3>Cambio de apellido a <strong>$apellido[$i]</strong> realizado</h3>";
         $conexion->query($consulta);
     }
     if (!empty($numero[$i])) {
         $consulta = "update contacto set numero=$numero[$i] where id=$id[$i]";
-        echo "Cambio $numero[$i] realizado<br />";
+        echo "<h3>Cambio de número a <strong>$numero[$i]</strong> realizado</h3><br />";
         $conexion->query($consulta);
     }
     $i++;
 }
+$url = 'index.php';
+echo "<a href=$url><input type='button' class='btn btn-success center-block' name='btnatras' value='Volver atrás'/></a>";
+echo "</div>";
+} else {
+    echo "Ha ocurrido un error: ".mysqli_error($conexion);
+}
 mysqli_close($conexion);
-/*while ($cuenta>$i) {
-if (!empty($nombre[$i])) {
-    echo "update contacto set nombre='$nombre[$i]' where id='$id[$i]<br />";
-}
-if (!empty($apellido[$i])) {
-    echo "update contacto set apellido='$apellido[$i]' where id=$id[$i]<br />";
-}
-if (!empty($numero[$i])) {
-    echo "update contacto set numero=$numero[$i] where id=$id[$i]<br />";
-}
-$i++;
-}*/
+
 ?>

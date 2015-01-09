@@ -1,33 +1,15 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- bootstrap -->
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+    <!-- Jquery -->
     <script type="text/javascript" src="jquery/jquery-1.11.2.min.js"></script>
     <script type="text/javascript" src="jquery/validate/jquery.validate.min.js"></script>
     <script type="text/javascript" src="jquery/validate/messages_es.min.js"></script>
-    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript">
-        function descativarChk(id) {
-            var chk = document.getElementById(id);
-            var nombre = 'nombre'+id;
-            nombre = document.getElementById(nombre);
-            var apellido = 'apellido'+id;
-            apellido = document.getElementById(apellido);
-            var numero = 'numero'+id;
-            numero = document.getElementById(numero);
-            if (chk.checked) {
-                nombre.removeAttribute('disabled', '');
-                apellido.removeAttribute('disabled', '');
-                numero.removeAttribute('disabled', '');
-
-            } else {
-                nombre.setAttribute('disabled', '');
-                apellido.setAttribute('disabled', '');
-                numero.setAttribute('disabled', '');
-            }
-
-        }
-    </script>
+    <!-- Funciones JS -->
+    <script type="text/javascript" src="funciones.js"></script>
 </head>
 <body>
     <div id="main">

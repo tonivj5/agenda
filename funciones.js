@@ -1,3 +1,4 @@
+/* INDEX */
 function activarBtn() {
     var btneliminar = document.getElementById('btneliminar');
     var btnactualizar = document.getElementById('btnactualizar');
@@ -34,4 +35,25 @@ function enviarUpdate() {
     formulario.removeAttribute('action', 'preupdate.php');
     formulario.setAttribute('action', 'preupdate.php');
     formulario.submit();
+}
+/* PREUPDATE */
+function descativarChk(id) {
+    var chk = document.getElementById(id);
+    var nombre = 'nombre'+id;
+    nombre = document.getElementById(nombre);
+    var apellido = 'apellido'+id;
+    apellido = document.getElementById(apellido);
+    var numero = 'numero'+id;
+    numero = document.getElementById(numero);
+    if (chk.checked) {
+        nombre.removeAttribute('disabled', '');
+        apellido.removeAttribute('disabled', '');
+        numero.removeAttribute('disabled', '');
+
+    } else {
+        nombre.setAttribute('disabled', '');
+        apellido.setAttribute('disabled', '');
+        numero.setAttribute('disabled', '');
+    }
+
 }

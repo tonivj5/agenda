@@ -14,7 +14,8 @@ $consulta = "delete from contacto where id in ($ids)";
 $resultado = $conexion->query($consulta);
 if ($resultado) {
     echo "<center><h1>Se han eliminado los contacto exitosamente</h1><br />";
-    echo "<input type='button' value='Volver atrás' class='btn btn-success' onclick='history.back()'/>";
+    $url = htmlspecialchars($_SERVER['HTTP_REFERER']);
+    echo "<a href='$url'><input type='button' value='Volver atrás' class='btn btn-success'/></a></center>";
 } else {
     echo "Ha ocurrido un error: ".mysqli_error($conexion);
 }

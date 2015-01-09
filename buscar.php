@@ -5,7 +5,7 @@
 </head>
 <body>
     <div id="main">
-        <div id="tabla" style="height: 150px; overflow-y: auto">
+        <div id="tabla" style="height: auto;">
             <table class="table table-striped table-bordered table-hover">
                 <thead>
                     <tr>
@@ -28,8 +28,14 @@
     while ($fila = $resultado->fetch_assoc()) {
         echo "<tr><td><input type='checkbox' name='chkid[]' value='".$fila["id"]."'/></td><td>".$fila["nombre"]."</td><td>".$fila["apellido"]."</td><td>".$fila["numero"]."</td></tr>";
     }
+$url = $_SERVER[HTTP_REFERER];
 mysqli_close($conexion);
 ?>
                 </tbody>
             </table>
+        </div>
+        <div class='well'>
+<?php
+            echo "<a href=$url><input type='button' value='Volver atrás' name='btnatras' class='btn btn-success'/></a>";
+?>
         </div>
