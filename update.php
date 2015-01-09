@@ -40,7 +40,7 @@ while ($cuenta>$i) {
     $i++;
 }
 $url = 'index.php';
-echo "<a href=$url><input type='button' class='btn btn-success center-block' name='btnatras' value='Volver atrás'/></a>";
+echo "<div class='center-block text-center'><a href=$url><input type='button' class='btn btn-success' name='btnatras' value='Volver atrás'/></a></div>";
 echo "</div>";
 } else {
     echo "Ha ocurrido un error: ".mysqli_error($conexion);
