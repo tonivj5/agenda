@@ -21,22 +21,29 @@ echo "<div class='container well center-block'><h2 class='text-center'>Historial
 $i = 0;
 $cuenta = count(explode(',',$ids));
 while ($cuenta>$i) {
-    /*echo "<h4>$nombre[$i] $apellido[$i] $numero[$i]</h4>";*/
+    $consulta = "select * from contacto where id=$id[$i]";
+    $resultado = $conexion->query($consulta);
+    if ($fila = $resultado->fetch_assoc()) {
+    echo "<h4>".$fila["nombre"]." ".$fila["apellido"].", ".$fila["numero"]."</h4>";
+    }
+    $consulta = "select * from contacto";
+    $resultado = $conexion->query($consulta);
     if (!empty($nombre[$i])) {
         $consulta = "update contacto set nombre='$nombre[$i]' where id=$id[$i]";
-        echo "<h3>Cambio de nombre a <strong>$nombre[$i]</strong> realizado<h3>";
+        echo "<h3>Cambió de nombre a <strong>$nombre[$i]</strong><h3>";
         $conexion->query($consulta);
     }
     if (!empty($apellido[$i])) {
         $consulta = "update contacto set apellido='$apellido[$i]' where id=$id[$i]";
-        echo "<h3>Cambio de apellido a <strong>$apellido[$i]</strong> realizado</h3>";
+        echo "<h3>Cambió de apellido a <strong>$apellido[$i]</strong></h3>";
         $conexion->query($consulta);
     }
     if (!empty($numero[$i])) {
         $consulta = "update contacto set numero=$numero[$i] where id=$id[$i]";
-        echo "<h3>Cambio de número a <strong>$numero[$i]</strong> realizado</h3><br />";
+        echo "<h3>Cambió de número a <strong>$numero[$i]</strong></h3>";
         $conexion->query($consulta);
     }
+    echo "<br />";
     $i++;
 }
 $url = 'index.php';
@@ -46,5 +53,4 @@ echo "</div>";
     echo "Ha ocurrido un error: ".mysqli_error($conexion);
 }
 mysqli_close($conexion);
-
 ?>
