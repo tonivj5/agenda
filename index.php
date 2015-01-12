@@ -88,12 +88,14 @@
                         </fieldset>
                     </div>
                     <div class="">
+                        <fieldset>
                         <legend>Actualizar contacto</legend>
                         <form role="form" action="preupdate.php" enctype="multipart/form-data">
                             <div class="form-group">
                             </div>
                                 <input type="button" name="btnactualizar" id="btnactualizar" value="Actualizar contacto" class="btn btn-primary disabled" onclick="enviarUpdate();"/><br /><br />
                         </form>
+                        </fieldset>
                     </div>
                     <div class="">
                         <fieldset>
